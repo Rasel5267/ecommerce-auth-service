@@ -12,9 +12,15 @@ router.post(
 );
 
 router.post(
+  '/create-seller',
+  validateRequest(UserValidation.createSellerZodSchema),
+  UserController.createSeller
+);
+
+router.post(
   '/create-admin',
   validateRequest(UserValidation.createAdminZodSchema),
-  UserController.createCustomer
+  UserController.createAdmin
 );
 
 export const UserRoutes = router;

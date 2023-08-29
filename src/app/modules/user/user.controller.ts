@@ -17,6 +17,18 @@ const createCustomer = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const createSeller = catchAsync(async (req: Request, res: Response) => {
+  const { seller, ...userData } = req.body;
+  const result = await UserService.CreateSeller(seller, userData);
+
+  sendResponse<IUser>(res, {
+    statusCode: httpStatus.CREATED,
+    success: true,
+    message: 'Seller created successfully',
+    data: result,
+  });
+});
+
 const createAdmin = catchAsync(async (req: Request, res: Response) => {
   const { admin, ...userData } = req.body;
   const result = await UserService.CreateAdmin(admin, userData);
@@ -31,5 +43,6 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
 
 export const UserController = {
   createCustomer,
+  createSeller,
   createAdmin,
 };

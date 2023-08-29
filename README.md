@@ -1,2 +1,1 @@
-# university-management-auth-service
-# ecommerce-auth-service
+# e-commerce-auth-service

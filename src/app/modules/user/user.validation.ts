@@ -32,7 +32,7 @@ const createCustomerZodSchema = z.object({
 const createSellerZodSchema = z.object({
   body: z.object({
     password: z.string().optional(),
-    customer: z.object({
+    seller: z.object({
       email: z
         .string({
           required_error: 'Email is required',
@@ -46,14 +46,8 @@ const createSellerZodSchema = z.object({
           required_error: 'Last name is required',
         }),
       }),
-      password: z.string({
-        required_error: 'Password is required',
-      }),
       contactNo: z.string({
         required_error: 'Contact number is required',
-      }),
-      address: z.string({
-        required_error: 'Address is required',
       }),
       storeName: z.string({
         required_error: 'Store Name is required',
@@ -88,7 +82,7 @@ const createSellerZodSchema = z.object({
 const createAdminZodSchema = z.object({
   body: z.object({
     password: z.string().optional(),
-    customer: z.object({
+    admin: z.object({
       email: z
         .string({
           required_error: 'Email is required',
@@ -102,18 +96,13 @@ const createAdminZodSchema = z.object({
           required_error: 'Last name is required',
         }),
       }),
-      password: z.string({
-        required_error: 'Password is required',
-      }),
       contactNo: z.string({
         required_error: 'Contact number is required',
       }),
       address: z.string({
         required_error: 'Address is required',
       }),
-      profileImage: z.string({
-        required_error: 'Profile Image is required',
-      }),
+      profileImage: z.string().optional(),
     }),
   }),
 });

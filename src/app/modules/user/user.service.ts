@@ -7,6 +7,8 @@ import { ICustomer } from '../customer/customer.interface';
 import { Customer } from '../customer/customer.model';
 import { IAdmin } from '../admin/admin.interface';
 import { Admin } from '../admin/admin.model';
+import { ISeller } from '../seller/seller.interface';
+import { Seller } from '../seller/seller.model';
 
 const CreateCustomer = async (
   customer: ICustomer,
@@ -53,6 +55,51 @@ const CreateCustomer = async (
   return newUserAllData;
 };
 
+const CreateSeller = async (
+  seller: ISeller,
+  user: IUser
+): Promise<IUser | null> => {
+  // set role
+  user.role = 'seller';
+
+  let newUserAllData = null;
+  const session = await mongoose.startSession();
+  try {
+    session.startTransaction();
+    // Create seller using session
+    const newCustomer = await Seller.create([seller], { session });
+
+    if (!newCustomer.length) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create seller');
+    }
+
+    user.email = seller.email;
+
+    const newUser = await User.create([user], { session });
+
+    if (!newUser.length) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create user');
+    }
+
+    newUserAllData = newUser[0];
+
+    await session.commitTransaction();
+    await session.endSession();
+  } catch (error) {
+    await session.abortTransaction();
+    await session.endSession();
+    throw error;
+  }
+
+  if (newUserAllData) {
+    newUserAllData = await User.findOne({
+      email: newUserAllData.email,
+    }).populate('admin');
+  }
+
+  return newUserAllData;
+};
+
 const CreateAdmin = async (
   admin: IAdmin,
   user: IUser
@@ -64,7 +111,7 @@ const CreateAdmin = async (
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
-    // Create customer using session
+    // Create admin using session
     const newCustomer = await Admin.create([admin], { session });
 
     if (!newCustomer.length) {
@@ -100,5 +147,6 @@ const CreateAdmin = async (
 
 export const UserService = {
   CreateCustomer,
+  CreateSeller,
   CreateAdmin,
 };

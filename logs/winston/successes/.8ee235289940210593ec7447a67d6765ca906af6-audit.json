@@ -14,6 +14,11 @@
             "date": 1693323259210,
             "name": "E:\\Personal Project\\ecommerce-auth-service\\logs\\winston\\successes\\um-2023-29-08-21-success.log",
             "hash": "b017e354a6675fba52d68e68074c048e3a9fe466a6d82bf4eb74c9142d6bfea6"
+        },
+        {
+            "date": 1693324845310,
+            "name": "E:\\Personal Project\\ecommerce-auth-service\\logs\\winston\\successes\\um-2023-29-08-22-success.log",
+            "hash": "cc04f617a9668324addad56d8b942e7aed0c08ef83bd1c18fccb43a21141acdf"
         }
     ],
     "hashType": "sha256"
