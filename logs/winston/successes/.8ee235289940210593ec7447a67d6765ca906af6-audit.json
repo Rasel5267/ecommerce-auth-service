@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "E:\\Personal Project\\ecommerce-auth-service\\logs\\winston\\successes\\.8ee235289940210593ec7447a67d6765ca906af6-audit.json",
+    "files": [
+        {
+            "date": 1693309058582,
+            "name": "E:\\Personal Project\\ecommerce-auth-service\\logs\\winston\\successes\\um-2023-29-08-17-success.log",
+            "hash": "6427ed83480e2ec1520fe6c88cfd210ad879afeda188728f6ff59d21bbe9fadd"
+        },
+        {
+            "date": 1693323259210,
+            "name": "E:\\Personal Project\\ecommerce-auth-service\\logs\\winston\\successes\\um-2023-29-08-21-success.log",
+            "hash": "b017e354a6675fba52d68e68074c048e3a9fe466a6d82bf4eb74c9142d6bfea6"
+        }
+    ],
+    "hashType": "sha256"
+}
